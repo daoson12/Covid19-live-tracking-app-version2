@@ -7,14 +7,15 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "heroku-postbuild": "ng build --prod"
     },
     "private": true,
     "dependencies": {
         "@angular/animations": "~10.0.0",
+        "@angular/cli": "~10.0.0",
         "@angular/common": "~10.0.0",
         "@angular/compiler": "~10.0.0",
-        "@angular/cli": "~10.0.0",
         "@angular/compiler-cli": "~10.0.0",
         "@angular/core": "~10.0.0",
         "@angular/forms": "~10.0.0",
