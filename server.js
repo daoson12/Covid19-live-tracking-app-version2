@@ -7,4 +7,5 @@ app.use(express.static(__dirname + '/dist/corona-virus-live-tracking'));
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/corona-virus-live-tracking/index.html'));
 });
-// Start the app by listening on the default Heroku port
+// Start the app by listening on the default Heroku
+app.listen(process.env.PORT || 8080);
