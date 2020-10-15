@@ -1,0 +1,73 @@
+<div class="ui inverted dimmer" [class.active]='loading'>
+    <div class="ui text loader">Loading</div>
+</div>
+<!-- ======= Hero Section ======= -->
+<main id="main">
+    <section id="hero">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+                    <div class="container">
+                        <h2>Covid-19 Live Tracking App
+                        </h2>
+                        <p> Covid-19 Tracker Country Wise
+                        </p>
+                        <div class="input-group mb-3 ">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Countres</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" #input (change)='updateValues(input.value)'>
+                            <option default>Select Country...</option>
+                          <option value="{{con}}" *ngFor="let con of countries">{{con}}</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-dashboard-card [totalConfirmed]='totalConfirmed' [totalActive]='totalActive' [totalRecovered]='totalRecovered' [totalDeaths]='totalDeaths'></app-dashboard-card>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sno.</th>
+                                <th>Date</th>
+                                <th>Cases</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let cs of selectedCountryData |paginate:{itemsPerPage: 4, currentPage: p },let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{cs.date | date}}</td>
+                                <td>{{cs.cases}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pagination -->
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+
+
+                <div class="col">
+                    <google-chart></google-chart>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+</main>
+<!-- End Hero -->
+
+<!-- End Hero -->
